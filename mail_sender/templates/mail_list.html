@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="col-8">
+    <h1 class="mt-2">Статистика отправки</h1>
+    <hr class="mt-0 mb-4">
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">№</th>
+        <th scope="col">Тема письма</th>
+        <th scope="col">Сообщение</th>
+        <th scope="col">Получатель</th>
+        <th scope="col">Создано</th>
+        <th scope="col">Интервал</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for mail in mail_list %}
+    <tr>
+        <th scope="row">{{ mail.id }}</th>
+        <td>{{ mail.subject }}</td>
+        <td>{{ mail.message }}</td>
+        <td>{{ mail.send_to }}</td>
+        <td>{{ mail.date|date:'Y-m-d H:i:s' }}</td>
+        <td>{{ mail.interval }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+
+{% endblock %}
